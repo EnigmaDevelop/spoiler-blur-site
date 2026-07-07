@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Spoiler Blur — Browse X/Twitter without spoilers</title>
+  <meta name="description" content="Spoiler Blur is a Chrome extension that blurs tweets and trends matching your spoiler keywords, so you can browse X/Twitter safely until you catch up." />
+  <style>
+    :root {
+      --bg: #ffffff; --fg: #0f1419; --muted: #536471; --border: #e1e8ed;
+      --accent: #7856ff; --accent-dark: #6244d9; --chip-bg: #f0ebff;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root { --bg: #15202b; --fg: #f7f9f9; --muted: #8b98a5; --border: #38444d; --chip-bg: #2b2145; }
+    }
+    * { box-sizing: border-box; margin: 0; }
+    body {
+      background: var(--bg); color: var(--fg);
+      font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+    }
+    .wrap { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+    header.site { padding: 18px 0; border-bottom: 1px solid var(--border); }
+    header.site .wrap { display: flex; align-items: center; justify-content: space-between; }
+    .brand { font-weight: 800; font-size: 18px; text-decoration: none; color: var(--fg); }
+    .brand span { margin-right: 8px; }
+    nav a { color: var(--muted); text-decoration: none; margin-left: 18px; font-size: 14px; }
+    nav a:hover { color: var(--accent); }
+    .hero { text-align: center; padding: 72px 0 56px; }
+    .hero h1 { font-size: 40px; line-height: 1.2; margin-bottom: 16px; }
+    .hero p { color: var(--muted); font-size: 18px; max-width: 560px; margin: 0 auto 28px; }
+    .btn {
+      display: inline-block; background: var(--accent); color: #fff; font-weight: 700;
+      padding: 12px 28px; border-radius: 9999px; text-decoration: none; font-size: 16px;
+    }
+    .btn:hover { background: var(--accent-dark); }
+    .btn-note { display: block; margin-top: 10px; color: var(--muted); font-size: 13px; }
+    .demo {
+      margin: 0 auto 8px; max-width: 480px; border: 1px solid var(--border);
+      border-radius: 16px; padding: 18px; text-align: left; position: relative; overflow: hidden;
+    }
+    .demo .tweet-user { font-weight: 700; font-size: 14px; margin-bottom: 4px; }
+    .demo .tweet-body { filter: blur(7px); user-select: none; }
+    .demo .overlay {
+      position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center;
+      justify-content: center; gap: 4px; background: rgba(15, 20, 25, 0.35); color: #fff;
+      font-weight: 700; text-shadow: 0 1px 4px rgba(0,0,0,.6);
+    }
+    .overlay .kw { font-weight: 400; font-size: 13px; opacity: .9; }
+    .overlay .reveal { margin-top: 6px; background: var(--accent); border: none; color: #fff;
+      font-weight: 700; padding: 5px 18px; border-radius: 9999px; font-size: 13px; }
+    section { padding: 48px 0; border-top: 1px solid var(--border); }
+    h2 { font-size: 26px; margin-bottom: 24px; text-align: center; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 20px; }
+    .card { border: 1px solid var(--border); border-radius: 14px; padding: 20px; }
+    .card h3 { font-size: 16px; margin-bottom: 8px; }
+    .card p { color: var(--muted); font-size: 14px; }
+    .pricing { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; max-width: 640px; margin: 0 auto; }
+    .plan { border: 1px solid var(--border); border-radius: 14px; padding: 24px; text-align: center; }
+    .plan.featured { border-color: var(--accent); background: var(--chip-bg); }
+    .plan .price { font-size: 32px; font-weight: 800; margin: 8px 0; }
+    .plan .per { font-size: 13px; color: var(--muted); }
+    .plan ul { list-style: none; padding: 0; margin: 16px 0; color: var(--muted); font-size: 14px; }
+    .plan li { margin: 6px 0; }
+    footer.site { border-top: 1px solid var(--border); padding: 28px 0; color: var(--muted); font-size: 13px; }
+    footer.site .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+    footer.site a { color: var(--muted); }
+    footer.site a:hover { color: var(--accent); }
+  </style>
+</head>
+<body>
+  <header class="site">
+    <div class="wrap">
+      <a class="brand" href="./"><span>🙈</span>Spoiler Blur</a>
+      <nav>
+        <a href="#features">Features</a>
+        <a href="#pricing">Pricing</a>
+        <a href="privacy.html">Privacy</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="hero wrap">
+    <h1>Browse X/Twitter without getting spoiled</h1>
+    <p>Spoiler Blur automatically blurs tweets and trends that match your spoiler keywords — until you're ready to see them.</p>
+    <div class="demo" aria-hidden="true">
+      <div class="tweet-user">Some User @somewhere · 1h</div>
+      <div class="tweet-body">OMG that season finale reveal was absolutely insane, I can't believe they killed off—</div>
+      <div class="overlay">🙈 Spoiler hidden <span class="kw">"season finale"</span><button class="reveal">Reveal</button></div>
+    </div>
+    <a class="btn" href="#pricing">Add to Chrome — Free</a>
+    <span class="btn-note">Chrome Web Store listing coming soon</span>
+  </div>
+
+  <section id="features">
+    <div class="wrap">
+      <h2>How it works</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>🔑 Your keywords, your rules</h3>
+          <p>Create keyword lists for the shows, games, or events you're behind on. Any tweet or trend that mentions them gets blurred instantly.</p>
+        </div>
+        <div class="card">
+          <h3>👆 Reveal when ready</h3>
+          <p>Blurred posts stay one click away. Hit "Reveal" on any post you actually want to see — nothing is ever deleted or hidden for good.</p>
+        </div>
+        <div class="card">
+          <h3>⚡ Built for speed</h3>
+          <p>Spoiler Blur only scans new content as it appears and does the work in idle time, so your timeline stays as fast as ever.</p>
+        </div>
+        <div class="card">
+          <h3>🔒 Private by design</h3>
+          <p>Your keywords never leave your browser. No accounts, no tracking, no analytics. <a href="privacy.html">Read the privacy policy</a>.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="pricing">
+    <div class="wrap">
+      <h2>Pricing</h2>
+      <div class="pricing">
+        <div class="plan">
+          <h3>Free</h3>
+          <div class="price">$0</div>
+          <div class="per">forever</div>
+          <ul>
+            <li>1 keyword list</li>
+            <li>Up to 10 keywords</li>
+            <li>Full blur &amp; reveal features</li>
+          </ul>
+        </div>
+        <div class="plan featured">
+          <h3>Premium</h3>
+          <div class="price">$4.99</div>
+          <div class="per">one-time payment · lifetime access</div>
+          <ul>
+            <li>Unlimited keyword lists</li>
+            <li>Unlimited keywords</li>
+            <li>Use on up to 3 devices</li>
+          </ul>
+          <a class="btn" href="https://buy.polar.sh/polar_cl_c9L5KqF9oL5AMqql9k0kfm4wORKkewMBl9Rjw0gNaB4">Get Premium</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site">
+    <div class="wrap">
+      <div>© 2026 Enigma Lab · Spoiler Blur</div>
+      <div>
+        <a href="privacy.html">Privacy Policy</a> ·
+        <a href="mailto:enigmaticsolver@gmail.com">Contact</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

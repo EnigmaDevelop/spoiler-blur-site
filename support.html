@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Support — Spoiler Blur</title>
+  <style>
+    :root {
+      --bg: #ffffff; --fg: #0f1419; --muted: #536471; --border: #e1e8ed; --accent: #7856ff;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root { --bg: #15202b; --fg: #f7f9f9; --muted: #8b98a5; --border: #38444d; }
+    }
+    * { box-sizing: border-box; margin: 0; }
+    body {
+      background: var(--bg); color: var(--fg); line-height: 1.7;
+      font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+    .wrap { max-width: 720px; margin: 0 auto; padding: 24px; }
+    a { color: var(--accent); }
+    h1 { font-size: 30px; margin: 32px 0 8px; }
+    .lead { color: var(--muted); margin-bottom: 28px; }
+    h2 { font-size: 19px; margin: 26px 0 8px; }
+    p, li { font-size: 15px; }
+    ul { padding-left: 22px; margin: 10px 0; }
+    .back { display: inline-block; margin-top: 24px; text-decoration: none; }
+    .contact {
+      margin-top: 32px; padding: 16px; border: 1px solid var(--border);
+      border-radius: 12px; font-size: 15px;
+    }
+    footer { border-top: 1px solid var(--border); margin-top: 40px; padding: 18px 0; color: var(--muted); font-size: 13px; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <a class="back" href="./">← Spoiler Blur</a>
+    <h1>Support</h1>
+    <p class="lead">Answers to common questions. Can't find yours? Email us — we read everything.</p>
+
+    <h2>Tweets aren't being blurred</h2>
+    <ul>
+      <li>Check that the extension toggle (top-right of the popup) is on, and the keyword list's checkbox is checked.</li>
+      <li>Matching is case-insensitive but literal: the keyword must appear in the tweet's text. Add common variations (e.g. "hotd" as well as "house of the dragon").</li>
+      <li>Spoiler Blur works on <strong>x.com</strong> and <strong>twitter.com</strong> in Chrome — not in the X mobile app.</li>
+    </ul>
+
+    <h2>How do I activate Premium?</h2>
+    <p>After purchase, your license key arrives by email. Open the Spoiler Blur popup, click <em>"Enter license key"</em> at the bottom, paste the key and hit <em>Activate</em>.</p>
+
+    <h2>"This key has reached its device limit"</h2>
+    <p>A license works on up to 3 devices. If you've replaced a computer and hit the limit, email us and we'll reset your activations.</p>
+
+    <h2>I lost my license key</h2>
+    <p>Your key was emailed by Polar (our payment provider) at purchase. Search your inbox for "Polar", or email us with the address you purchased with and we'll look it up.</p>
+
+    <h2>Refunds</h2>
+    <p>Something not working for you? Email us and we'll make it right.</p>
+
+    <div class="contact">
+      📮 <strong>Contact:</strong> <a href="mailto:enigmaticsolver@gmail.com">enigmaticsolver@gmail.com</a> — we usually reply within a day or two.
+    </div>
+
+    <footer>© 2026 Enigma Lab · Spoiler Blur · <a href="privacy.html">Privacy Policy</a></footer>
+  </div>
+</body>
+</html>

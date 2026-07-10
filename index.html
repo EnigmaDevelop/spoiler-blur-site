@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Spoiler Blur — Browse X/Twitter without spoilers</title>
-  <meta name="description" content="Spoiler Blur is a Chrome extension that blurs tweets and trends matching your spoiler keywords, so you can browse X/Twitter safely until you catch up." />
+  <title>Spoiler Blur — Block spoilers on X, Reddit &amp; YouTube</title>
+  <meta name="description" content="Spoiler Blur is a Chrome extension that blurs posts, comments, and videos matching your spoiler keywords, so you can browse X, Reddit, and YouTube safely until you catch up." />
   <style>
     :root {
       --bg: #ffffff; --fg: #0f1419; --muted: #536471; --border: #e1e8ed;
@@ -66,9 +66,26 @@
     footer.site .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
     footer.site a { color: var(--muted); }
     footer.site a:hover { color: var(--accent); }
+    .coupon {
+      background: var(--accent); color: #fff; text-align: center; padding: 10px 16px; font-size: 14px;
+    }
+    .coupon code {
+      background: rgba(255,255,255,.2); padding: 2px 8px; border-radius: 6px; font-weight: 700;
+    }
+    .badge {
+      display: inline-block; font-size: 11px; font-weight: 700; padding: 2px 9px;
+      border-radius: 9999px; background: var(--accent); color: #fff;
+      margin-left: 8px; vertical-align: 2px;
+    }
+    .badge.soon { background: var(--chip-bg); color: var(--accent); }
   </style>
 </head>
 <body>
+  <!-- Launch coupon banner: remove the `hidden` attribute (and set the real
+       code if it isn't WORLDCUP30) once the coupon is created in Polar. -->
+  <div class="coupon" hidden>
+    ⚽ World Cup launch week: <strong>30% off Premium</strong> with code <code>WORLDCUP30</code> at checkout
+  </div>
   <header class="site">
     <div class="wrap">
       <a class="brand" href="./"><span>🙈</span>Spoiler Blur</a>
@@ -82,15 +99,15 @@
   </header>
 
   <div class="hero wrap">
-    <h1>Browse X/Twitter without getting spoiled</h1>
-    <p>Spoiler Blur automatically blurs tweets and trends that match your spoiler keywords — until you're ready to see them.</p>
+    <h1>Browse X, Reddit &amp; YouTube without getting spoiled</h1>
+    <p>Spoiler Blur automatically blurs posts, comments, and videos that match your spoiler keywords — until you're ready to see them.</p>
     <div class="demo" aria-hidden="true">
       <div class="tweet-user">Some User @somewhere · 1h</div>
       <div class="tweet-body">OMG that season finale reveal was absolutely insane, I can't believe they killed off—</div>
       <div class="overlay">🙈 Spoiler hidden <span class="kw">"season finale"</span><button class="reveal">Reveal</button></div>
     </div>
-    <a class="btn" href="#pricing">Add to Chrome — Free</a>
-    <span class="btn-note">Chrome Web Store listing coming soon</span>
+    <a class="btn" href="https://chromewebstore.google.com/detail/spoiler-blur-%E2%80%94-spoiler-bl/bbaepddipmhfmcfcippikcklcmaiiboa">Add to Chrome — Free</a>
+    <span class="btn-note">Free plan included — no account, no sign-up</span>
   </div>
 
   <section id="features">
@@ -98,8 +115,12 @@
       <h2>How it works</h2>
       <div class="grid">
         <div class="card">
+          <h3>🌐 Three sites, one tool</h3>
+          <p>X/Twitter, Reddit, and YouTube — posts, comments, trends, and video thumbnails, all covered by the same keyword lists.</p>
+        </div>
+        <div class="card">
           <h3>🔑 Your keywords, your rules</h3>
-          <p>Create keyword lists for the shows, games, or events you're behind on. Any tweet or trend that mentions them gets blurred instantly.</p>
+          <p>Create keyword lists for the shows, games, or events you're behind on. Anything that mentions them gets blurred instantly.</p>
         </div>
         <div class="card">
           <h3>👆 Reveal when ready</h3>
@@ -119,19 +140,23 @@
 
   <section id="roadmap">
     <div class="wrap">
-      <h2>Coming soon</h2>
+      <h2>Roadmap</h2>
       <div class="grid">
         <div class="card">
-          <h3>📅 Mute until a date</h3>
+          <h3>👽 Reddit support<span class="badge">Shipped</span></h3>
+          <p>Post titles, thumbnails, and spoiler comments are blurred before the comment section ruins the finale.</p>
+        </div>
+        <div class="card">
+          <h3>▶️ YouTube support<span class="badge">Shipped</span></h3>
+          <p>Thumbnails are the worst spoilers of all. Matching titles and thumbnails are blurred across YouTube.</p>
+        </div>
+        <div class="card">
+          <h3>📅 Mute until a date<span class="badge soon">Coming soon</span></h3>
           <p>Watching the match on Friday? Blur a topic only until then — the list expires by itself when you've caught up.</p>
         </div>
         <div class="card">
-          <h3>👽 Reddit support</h3>
-          <p>Blur post titles and threads that match your keywords, before the comment section ruins the finale.</p>
-        </div>
-        <div class="card">
-          <h3>▶️ YouTube support</h3>
-          <p>Thumbnails are the worst spoilers of all. Blur matching titles and thumbnails across YouTube.</p>
+          <h3>📦 Keyword packs<span class="badge soon">Coming soon</span></h3>
+          <p>Ready-made lists for popular shows and events — characters, actors, and nicknames included, one click to enable.</p>
         </div>
       </div>
     </div>
